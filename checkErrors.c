@@ -1,7 +1,3 @@
-
-	
-	
-
 #include <stdio.h>
 
 #define MAXCHARACTERS 81
@@ -63,7 +59,6 @@ int checkIfValid(char characterArray[],char twoDimArray[], int inputCharacters)
              if ((checkDuplicate[i] != '.') && (checkDuplicate[j] != '.'))
             printf("duplicate found\n");
              inputRecord = NOTVALID;
-           
            }
          }
        }
