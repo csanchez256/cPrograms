@@ -35,9 +35,7 @@ int checkIfValid(char characterArray[],char twoDimArray[], int inputCharacters)
   int numChars,c,inputRecord;
   int duplicateIndex;
   char checkDuplicate[9];
-  int count = sizeof(checkDuplicate)/sizeof(checkDuplicate[0]);
-  int i,j;
-  
+
   inputRecord = 1;
   numChars = duplicateIndex = c = 0;
 
@@ -47,29 +45,12 @@ int checkIfValid(char characterArray[],char twoDimArray[], int inputCharacters)
     
      /* Load 9 elements into this array and see if there are any duplicates */ 
      checkDuplicate[duplicateIndex] = c;
-    
-    // printf("check duplicates: at - %d , %c\n",
-    //       duplicateIndex, checkDuplicate[duplicateIndex]); 
      
-    /* we are going to check for duplicates */
-     if((duplicateIndex == 8) && (inputRecord == VALID)) 
+     /* we are going to check for duplicates */
+     if(duplicateIndex == 8) 
      {
-       for (i=0;i<count;i++) 
-       {
-         for(j=i+1;j<count;j++) 
-         {
-           if (checkDuplicate[i] == checkDuplicate[j]) 
-           {
-             if ((checkDuplicate[i] != '.') && (checkDuplicate[j] != '.'))
-            printf("duplicate found\n");
-             inputRecord = NOTVALID;
-           
-           }
-         }
-       }
        duplicateIndex = 0;
      }
-    else if(duplicateIndex != 8) duplicateIndex++;
      
      if(numChars > MAXCHARACTERS)
      {
@@ -85,7 +66,7 @@ int checkIfValid(char characterArray[],char twoDimArray[], int inputCharacters)
          numChars = 0;
          inputRecord = NOTVALID;
        }
-       else if( (numChars == MAXCHARACTERS) && (inputRecord == VALID))
+       else if( numChars == MAXCHARACTERS)
        {
          printf("OK!!!!\n\n");
          numChars = 0;
@@ -97,6 +78,7 @@ int checkIfValid(char characterArray[],char twoDimArray[], int inputCharacters)
           inputRecord = VALID;
           numChars++;
          } 
+    duplicateIndex++;
   }/*end of while loop */
 return 1;
 }
